@@ -9,13 +9,16 @@ const initialState = {
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData) => {
-    const response = await fetch("http://localhost:8000/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    const response = await fetch(
+      "https://brave-crow-sarong.cyclic.cloud/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to register user");
@@ -31,13 +34,16 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData) => {
-    const response = await fetch("http://localhost:8000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    const response = await fetch(
+      "https://brave-crow-sarong.cyclic.cloud/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to login user");
@@ -60,7 +66,7 @@ export const fetchUserData = createAsyncThunk(
     }
 
     const response = await fetch(
-      `http://localhost:8000/api/auth/userData?userId=${userId}`,
+      `https://brave-crow-sarong.cyclic.cloud/api/auth/userData?userId=${userId}`,
       {
         headers: {
           Authorization: `Bearer ${authToken}`,

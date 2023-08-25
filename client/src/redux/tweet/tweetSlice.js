@@ -11,7 +11,9 @@ const initialState = {
 export const fetchAllTweets = createAsyncThunk(
   "tweets/fetchAllTweets",
   async () => {
-    const response = await fetch("http://localhost:8000/api/tweet/getTweets");
+    const response = await fetch(
+      "https://brave-crow-sarong.cyclic.cloud/api/tweet/getTweets"
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch tweets");
     }
@@ -30,7 +32,7 @@ export const fetchSingleTweet = createAsyncThunk(
     }
 
     const response = await fetch(
-      `http://localhost:8000/api/tweet/getTweet?tweetId=${tweetId}`,
+      `https://brave-crow-sarong.cyclic.cloud/api/tweet/getTweet?tweetId=${tweetId}`,
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -56,14 +58,17 @@ export const createTweet = createAsyncThunk(
       throw new Error("Authentication required");
     }
 
-    const response = await fetch("http://localhost:8000/api/tweet/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
-      },
-      body: JSON.stringify(tweetData),
-    });
+    const response = await fetch(
+      "https://brave-crow-sarong.cyclic.cloud/api/tweet/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(tweetData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to create tweet");
@@ -85,7 +90,7 @@ export const editTweet = createAsyncThunk(
     }
 
     const response = await fetch(
-      `http://localhost:8000/api/tweet/edit?tweetId=${id}`,
+      `https://brave-crow-sarong.cyclic.cloud/api/tweet/edit?tweetId=${id}`,
       {
         method: "PATCH",
         headers: {
@@ -115,7 +120,7 @@ export const deleteTweet = createAsyncThunk(
     }
 
     const response = await fetch(
-      `http://localhost:8000/api/tweet/delete?tweetId=${tweetId}`,
+      `https://brave-crow-sarong.cyclic.cloud/api/tweet/delete?tweetId=${tweetId}`,
       {
         method: "DELETE",
         headers: {
