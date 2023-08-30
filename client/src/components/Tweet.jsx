@@ -7,12 +7,11 @@ import { useDispatch } from "react-redux";
 import { deleteTweet, fetchSingleTweet } from "../redux/tweet/tweetSlice";
 import { toast } from "react-toastify";
 
-const Tweet = ({ tweet, child }) => {
+const Tweet = ({ tweet, update }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteTweet(tweet.id));
-    child("");
     toast.success("Tweet deleted..!", {
       position: toast.POSITION.BOTTOM_CENTER,
     });
@@ -22,10 +21,10 @@ const Tweet = ({ tweet, child }) => {
     dispatch(fetchSingleTweet(tweet.id));
   };
 
-  useEffect(() => {}, [dispatch]);
+  useEffect(() => {}, [dispatch, tweet, update]);
 
   return (
-    <div className="mt-5 border p-2 rounded-md border-slate-600 mlg:w-full mmd:min-w-[20rem] smd:min-w-[20rem] smd:pl-0 usmd:w-[8rem] usmd:mr-0">
+    <div className="mt-5 border p-2 rounded-md border-slate-600 mlg:w-full mmd:min-w-[20rem] smd:max-w-[16rem] smd:mx-auto usmd:max-w-[7rem] usmd:m-2">
       <div className="flex flex-shrink-0 p-4 pb-0">
         <div className="flex justify-between item-center w-full">
           <div>
@@ -109,7 +108,7 @@ const Tweet = ({ tweet, child }) => {
         <div className="flex items-center justify-between space-x-2 py-3">
           <a
             href="#"
-            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:bg-blue-800 hover:text-blue-300 p-2"
+            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1  hover:text-blue-800 p-2"
           >
             {" "}
             <span className="m-1 text-md">{tweet.likes}</span>
@@ -118,14 +117,14 @@ const Tweet = ({ tweet, child }) => {
           </a>
           <a
             href="#"
-            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:bg-blue-800 hover:text-blue-300 p-2"
+            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:text-blue-800 p-2"
           >
             <FaRetweet className="h-5 w-5 mr-1" />
             <span className="mmd:hidden">Retweet</span>
           </a>
           <a
             href="#"
-            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:bg-blue-800 hover:text-blue-300 p-2"
+            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:text-blue-800 p-2"
           >
             <span className="m-1 text-md">{tweet.comments}</span>
             <FaRegComment className="h-5 w-5 mr-1" />
@@ -133,7 +132,7 @@ const Tweet = ({ tweet, child }) => {
           </a>
           <a
             href="#"
-            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:bg-blue-800 hover:text-blue-300 p-2"
+            className="group flex items-center text-blue-400 text-sm font-medium rounded-full px-2 py-1 hover:text-blue-800 p-2"
           >
             <span className="m-1 text-md">{tweet.shares}</span>
             <IoMdShare className="h-5 w-5" />

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GrTwitter } from "react-icons/gr";
 import { FiVideo, FiBarChart2 } from "react-icons/fi";
-import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { createTweet } from "../redux/tweet/tweetSlice";
@@ -25,8 +24,8 @@ const TweetHead = () => {
   useEffect(() => {}, [dispatch]);
 
   return (
-    <div>
-      <div className="border border-slate-600 rounded-t-md px-3 smd:min-w-[20rem] usmd:w-[10rem] mmd:min-w-[20rem]">
+    <div className="mx-auto">
+      <div className="border border-slate-600 rounded-t-md px-3 smd:max-w-[7rem] smd:mx-auto usmd:max-w-[7rem] usmd:m-2 mmd:min-w-[20rem]">
         <div className="flex">
           <div className="flex-1 m-2">
             <h2 className="px-4 py-2 text-xl font-semibold text-white">Home</h2>
@@ -61,7 +60,7 @@ const TweetHead = () => {
           </div>
         </div>
       </div>
-      <div className="flex border border-t-0 border-slate-600 rounded-b-md smd:min-w-[20rem] mmd:min-w-[20rem] usmd:w-[15rem] usmd:-ml-10 usmd:border-b-0 usmd:border-r-0 usmd:py-2">
+      <div className="flex border border-t-0 border-slate-600 rounded-b-md smd:max-w-[7rem] smd:mx-auto mmd:min-w-[20rem] usmd:w-[15rem] usmd:-ml-10 usmd:border-b-0 usmd:border-r-0 usmd:py-0">
         <div className="w-10"></div>
         <div className="w-64 px-2">
           <div className="flex items-center justify-center space-x-4 mt-1 ">
@@ -69,19 +68,19 @@ const TweetHead = () => {
               href="#"
               className="group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
             >
-              <AiOutlineFileImage className="h-6 w-6" />
+              <AiOutlineFileImage className="h-6 w-6 hover:bg-blue-800" />
             </a>
             <a
               href="#"
               className="group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
             >
-              <FiVideo className="h-6 w-6" />
+              <FiVideo className="h-6 w-6 hover:bg-blue-800" />
             </a>
             <a
               href="#"
               className="group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
             >
-              <FiBarChart2 className="h-6 w-6" />
+              <FiBarChart2 className="h-6 w-6 hover:bg-blue-800" />
             </a>
           </div>
         </div>
